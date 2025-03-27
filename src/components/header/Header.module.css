@@ -1,0 +1,10 @@
+.headerList {
+    display: flex;
+    justify-content: center;
+}
+.headerItem {
+    padding-block: 20px;
+}
+.headerItem a{
+    padding: 20px;
+}

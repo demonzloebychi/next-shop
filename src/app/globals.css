@@ -24,3 +24,56 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+
+h1 {
+  font-size: clamp(32px, 3vw, 46px);
+  font-weight: 700;
+  text-align: center;
+  margin: 20px 0;
+}
+
+
+
+
+
+.cards {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.card {
+  width: 300px;
+  height: 400px;
+  box-shadow: 0 0 15px rgb(0, 0, 0, 0.1);
+  padding: 20px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  
+}
+
+.card-image img{
+  margin: 0 auto;
+  max-width: 100px;
+  max-height: 170px;
+}
+.card-info {
+  margin-top: auto;
+}
+
+.card-link {
+  background-color: var(--foreground);
+  color: var(--background);
+  padding: 15px 20px;
+  width: fit-content;
+  border-radius: 20px;
+
+  &:hover {
+    opacity: 0.9;
+  }
+}
