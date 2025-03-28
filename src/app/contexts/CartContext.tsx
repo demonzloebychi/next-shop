@@ -1,59 +1,76 @@
+// CartContext.tsx
 'use client';
 
-import { createContext, useState, ReactNode, useEffect } from 'react';
+import { createContext, useState, useEffect, ReactNode } from 'react';
 import { IProducts } from "@/app/products/products.interface";
 
-// Тип для значения контекста
+// Добавляем интерфейс для элемента корзины
+interface CartItem {
+  product: IProducts;
+  quantity: number;
+}
+
 interface CartContextValue {
-  cart: IProducts[];
+  cart: CartItem[];
   handleAddToCart: (product: IProducts) => void;
-  handleRemoveFromCart: (productId: number) => void;
+  handleRemoveFromCart: (productId: number) => void; // Изменяем тип на number
+  handleIncreaseQuantity: (productId: number) => void; // Добавляем новую функцию
 
 }
 
-// Создание контекста
-const CART_KEY = 'cart';
 const CartContext = createContext<CartContextValue | null>(null);
 
-// Провайдер контекста
 export const CartProvider = ({ children }: { children: ReactNode }) => {
-  const [cart, setCart] = useState<IProducts[]>([]);
+  const [cart, setCart] = useState<CartItem[]>([]);
 
 
-  // Загрузка корзины из Local Storage при инициализации
-  useEffect(() => {
-    const savedCart = localStorage.getItem(CART_KEY);
-    if (savedCart) setCart(JSON.parse(savedCart));
-  }, []);
+  // Логика добавления
+const handleAddToCart = (product: IProducts) => {
+  setCart(prev => {
+    const existing = prev.find(item => item.product.id === product.id);
+   
+    
+    return existing 
+      ? prev.map(item => 
+          item.product.id === product.id 
+            ? { ...item, quantity: item.quantity + 1 } 
+            : item
+        )
+      : [...prev, { product, quantity: 1 }];
+  });
+};
 
-  // Сохранение корзины в Local Storage при изменении
-  useEffect(() => {
-    localStorage.setItem(CART_KEY, JSON.stringify(cart));
-  }, [cart]);
-
-
-  const handleAddToCart = (product: IProducts) => {
-    const existingProduct = cart.find((item) => item.id === product.id);
-    if(!existingProduct) {
-    setCart([...cart, product]);
-  } else {
-    console.log('Товар уже добавлен');
-  }
-  };
-  
-
+  // Логика удаления
   const handleRemoveFromCart = (productId: number) => {
-    setCart(cart.filter((product) => Number(product.id) !== productId));
+    setCart(prev => 
+      prev
+        .map(item => 
+          item.product.id === productId 
+            ? { ...item, quantity: item.quantity - 1 } 
+            : item
+        )
+        .filter(item => item.quantity > 0)
+    );
+  };
+
+
+  const handleIncreaseQuantity = (productId: number) => {
+    setCart(prev => 
+      prev.map(item => 
+        item.product.id === productId 
+          ? { ...item, quantity: item.quantity + 1 } 
+          : item
+      )
+    );
   };
   
-
-
 
   return (
-    <CartContext.Provider value={{ cart, handleAddToCart, handleRemoveFromCart }}>
+    <CartContext.Provider value={{ cart, handleAddToCart, handleRemoveFromCart, handleIncreaseQuantity }}>
       {children}
     </CartContext.Provider>
   );
+  
 };
 
 export default CartContext;

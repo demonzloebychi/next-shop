@@ -151,13 +151,15 @@ button {
   position: fixed;
   top: 70px;
   right: 5%;
-  width: 300px;
+  width: 600px;
   min-height: 200px;
   height: auto;
   padding: 20px;
   background: var(--background);
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
+
+
 
 main{
   margin-top: 100px;
@@ -168,16 +170,63 @@ main{
 
 
 .cart-open-ul{
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  .cart-left{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 10px;
+  }
+  .cart-right{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 10px;
+
+  }
+  .cart-actions {
+    display: flex;
+    gap: 5px;
+  }
   li {
-    border-top: 1px solid rgb(218, 218, 218);
+    border-bottom: 1px solid rgb(218, 218, 218);
     padding-block: 5px;
     display: flex;
+    justify-content: space-between;
     gap: 20px;
+  }
+}
+
+
+@media (max-width:768px) {
+  .cart-open.active {
+    width: 90%;
+  }
+  .cart-open-ul li{
+    flex-direction: column;
+    padding-bottom: 20px;
+  }
+  .cart-open-ul .cart-right{
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
   }
 }
 
 .remove-product {
   background: rgb(255, 74, 74);
+  min-width: 40px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50px;
+  color: var(--background);
+  font-weight: 700;
+}
+
+.increase-product {
+  background: rgb(30, 97, 221);
   min-width: 40px;
   width: 40px;
   height: 40px;
