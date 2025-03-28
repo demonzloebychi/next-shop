@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import type { Metadata, ResolvingMetadata } from 'next'
+import AddToCartButton from '@/components/AddToCartButton';
 
 
 
@@ -47,8 +48,14 @@ const SinglePageProduct = async ({ params }: { params: Promise<{ id: number }> }
     const product = await fetchProduct(id);
 
     return (
-        <div>
+        <div className='single-product'>
             <h1>{product?.title}</h1> 
+            <p className='category'>{product.category}</p>
+            <p className='text-center mb-7 -mt-7'>
+             <AddToCartButton product={product} />
+
+            </p>
+            <p>{product?.description}</p>
             <div className='img' >
                 <Image width={400} height={400} src={product?.image} alt={product?.title} /> 
             </div>

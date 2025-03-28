@@ -1,8 +1,10 @@
 'use client'
-import React from 'react';
+import React, { useState } from 'react';
 import header from '@/components/header/Header.module.css'
+import Cart from '../cart/Cart';
 
 const Header = () => {
+    const [IsCartOpen, setIsCartOpen] = useState(false)
 
     const MENU = [
         {
@@ -13,15 +15,15 @@ const Header = () => {
             name: 'Каталог',
             url: '/products',
         },
-        {
-            name: 'Корзина',
-            url: '/cart'
-        }
+        // {
+        //     name: 'Корзина',
+        //     url: '/cart'
+        // }
     ]
 
 
     return (
-        <header>
+        <header className={header.header}>
             <nav className="nav">
                 <ul className={header.headerList}>
                     {
@@ -34,8 +36,29 @@ const Header = () => {
                             </li>
                         )
                     }
+                    <li>
+                        <button 
+                            className={`cart ${IsCartOpen ? 'active' : ''}`}
+                            onClick={() => setIsCartOpen(!IsCartOpen)}
+                            
+                        >
+                            Корзина
+                        </button>
+                        <div className={`cart-open ${IsCartOpen ? 'active' : ''}`}>
+                            <Cart />
+                        </div>
+                    </li>
                 </ul>
             </nav>
+            
+            {/* <div>
+                {IsCartOpen && (
+                    <div className='cart-opened'>
+
+                    </div>
+                )}
+            </div> */}
+            
         </header>
     );
 }

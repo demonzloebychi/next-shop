@@ -1,10 +1,24 @@
 .headerList {
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 .headerItem {
     padding-block: 20px;
 }
+.headerItem:nth-child(3){
+    padding-inline: 20px;
+  }
+
 .headerItem a{
     padding: 20px;
+}
+
+.header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: var(--background);
+    z-index: 2;
 }
