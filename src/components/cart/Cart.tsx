@@ -11,7 +11,7 @@ export default function Cart() {
     throw new Error('CartContext не найден');
   }
 
-  const { cart, handleRemoveFromCart } = cartContext;
+  const { cart } = cartContext;
 
   return (
     <div>

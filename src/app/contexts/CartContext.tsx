@@ -33,8 +33,14 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 
 
   const handleAddToCart = (product: IProducts) => {
+    const existingProduct = cart.find((item) => item.id === product.id);
+    if(!existingProduct) {
     setCart([...cart, product]);
+  } else {
+    console.log('Товар уже добавлен');
+  }
   };
+  
 
   const handleRemoveFromCart = (productId: number) => {
     setCart(cart.filter((product) => Number(product.id) !== productId));
