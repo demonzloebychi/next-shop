@@ -6,9 +6,9 @@
 .headerItem {
     padding-block: 20px;
 }
-.headerItem:nth-child(3){
+/* .headerItem:nth-child(3){
     padding-inline: 20px;
-  }
+  } */
 
 .headerItem a{
     padding: 20px;
@@ -21,4 +21,23 @@
     left: 0;
     background: var(--background);
     z-index: 2;
+}
+.cartLink {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+    padding-inline: 20px;
+
+}
+
+.quantity {
+    background: var(--dange-color);
+    color: var(--background);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
 }

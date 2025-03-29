@@ -2,9 +2,19 @@
 import React, { useState } from 'react';
 import header from '@/components/header/Header.module.css'
 import Cart from '../cart/Cart';
+import { useContext } from 'react';
+import CartContext from '@/app/contexts/CartContext';
 
 const Header = () => {
     const [IsCartOpen, setIsCartOpen] = useState(false)
+
+    const cartContext = useContext(CartContext);
+
+  if (!cartContext) {
+    throw new Error('CartContext не найден');
+  }
+
+  const { getTotalQuantity } = cartContext;
 
     const MENU = [
         {
@@ -36,7 +46,14 @@ const Header = () => {
                             </li>
                         )
                     }
-                    <li>
+                    <a className={header.cartLink} href='/cart'>
+                        <p>Корзина</p>
+                        <div className={header.quantity}>
+                         {getTotalQuantity()}
+                        </div>
+                         
+                    </a>
+                    {/* <li>
                         <button 
                             className={`cart ${IsCartOpen ? 'active' : ''}`}
                             onClick={() => setIsCartOpen(!IsCartOpen)}
@@ -47,7 +64,7 @@ const Header = () => {
                         <div className={`cart-open ${IsCartOpen ? 'active' : ''}`}>
                             <Cart />
                         </div>
-                    </li>
+                    </li> */}
                 </ul>
             </nav>
             

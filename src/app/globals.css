@@ -4,6 +4,8 @@
   --background: #ffffff;
   --foreground: #171717;
   --contrast-color: #1d4ed4;
+  --dange-color: rgb(255, 74, 74);
+
 }
 
 @theme inline {
@@ -216,7 +218,7 @@ main{
 }
 
 .remove-product {
-  background: rgb(255, 74, 74);
+  background: var(--dange-color);
   min-width: 40px;
   width: 40px;
   height: 40px;
@@ -233,4 +235,14 @@ main{
   border-radius: 50px;
   color: var(--background);
   font-weight: 700;
+}
+
+.clear-cart-button {
+  margin-top: 10px;
+  padding: 15px 20px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  background: var(--dange-color);
+  color: var(--background);
 }
