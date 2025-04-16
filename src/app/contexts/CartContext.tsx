@@ -79,6 +79,7 @@ const handleAddToCart = (product: IProducts) => {
     );
   };
 
+  
   const getTotalQuantity = useCallback(() => {
     return cart.reduce((acc, item) => acc + item.quantity, 0);
   }, [cart]);

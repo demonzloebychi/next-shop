@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { GetProductsResponse } from './products.interface';
+// import ProductCard from '@/components/Product';
 import ProductCard from '@/components/Product';
 
 
@@ -14,7 +15,8 @@ export const metadata: object = {
 }
 
 const fetchProducts = async () => {
-    const response = await fetch('https://fakestoreapi.com/products/', {
+    const response = await fetch('https://fakestoreapi.com/products', {
+
         cache: 'force-cache',
         next: {
             revalidate: 3600,
@@ -32,7 +34,7 @@ const fetchProducts = async () => {
 
 const Page = async () => {
     const data = await fetchProducts()
-    // console.log(data)
+    console.log(data)
     
 
     return (

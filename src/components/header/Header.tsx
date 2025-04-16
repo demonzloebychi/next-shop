@@ -23,6 +23,10 @@ const Header = () => {
         },
         {
             name: 'Каталог',
+            url: '/category',
+        },
+        {
+            name: 'Все товары',
             url: '/products',
         },
         // {
