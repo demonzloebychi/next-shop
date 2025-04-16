@@ -34,7 +34,7 @@ const fetchProducts = async () => {
 
 const Page = async () => {
     const data = await fetchProducts()
-    console.log(data)
+    // console.log(data)
     
 
     return (

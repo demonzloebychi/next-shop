@@ -4,6 +4,11 @@ import { IProducts } from "@/app/products/products.interface";
 // import { Product } from '@/types/cart';
 import AddToCartButton from '@/components/AddToCartButton';
 
+function slugify(text: string) {
+    return text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
+
+  }
+
 export default function ProductCard({ product }: { product: IProducts }) {
   return (
     <li className='card' key={product.id} >
@@ -19,7 +24,11 @@ export default function ProductCard({ product }: { product: IProducts }) {
                                 
     
                                 <div className="card-actions">
-                                    <a href={`products/${product.id}`} className="card-link">
+                                    <a 
+                                        // href={`/products/${product.id}`} 
+                                        href={`/category/${product.category}/${slugify(product.title)}`}
+                                        className="card-link"
+                                    >
                                         Подробнее
                                     </a>
                                     <AddToCartButton product={product} />

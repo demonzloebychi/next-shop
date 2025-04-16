@@ -6,7 +6,8 @@ interface CategoriesProps {
 
 export default function Categories({ category }: CategoriesProps) {
   // Создаем slug для ссылки
-  const slug = category.toLowerCase().replace(/\s+/g, '-').replace(/'/g, '');
+  // const slug = category.toLowerCase().replace(/\s+/g, '-').replace(/'/g, '');
+  const slug = category.toLowerCase();
 
   return (
     <li className='card h-auto'>
