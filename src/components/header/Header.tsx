@@ -41,12 +41,6 @@ const Header = () => {
     return (
         <header className={header.header}>
             <nav className={header.nav}>
-                <button
-                    className={`${header.burgerButton} ${isOpenMenu ? `${header.active}` : ''}`}
-                    onClick={()=> setIsOpenMenu(!isOpenMenu)}
-                >
-                    <span/><span/><span/>
-                </button>
                 <ul 
                     // className={header.headerList}
                     className={`${header.headerList} ${isOpenMenu ? `${header.active}` : ''}`}
@@ -82,6 +76,13 @@ const Header = () => {
                         </div>
                          
                     </a>
+
+                <button
+                    className={`${header.burgerButton} ${isOpenMenu ? `${header.active}` : ''}`}
+                    onClick={()=> setIsOpenMenu(!isOpenMenu)}
+                >
+                    <span/><span/><span/>
+                </button>
             </nav>
             
             {/* <div>
