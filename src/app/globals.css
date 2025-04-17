@@ -70,7 +70,6 @@ button {
 
 
 
-
 .card-image img{
   margin: 0 auto;
   max-width: 100px;
@@ -100,6 +99,7 @@ button {
   background-color: var(--contrast-color);
   color: var(--background);
   padding: 15px 20px;
+  margin: 0 0 20px 0;
   border-radius: 20px;
   &:hover {
     opacity: 0.9;
@@ -119,6 +119,7 @@ button {
 .single-product {
   img {
     margin: 0 auto;
+    margin-top: 30px;
   }
   p {
     text-transform: capitalize;
@@ -170,6 +171,7 @@ button {
 
 main{
   margin-top: 100px;
+  margin-bottom: 50px;
 }
 
 
@@ -251,3 +253,8 @@ main{
   background: var(--dange-color);
   color: var(--background);
 }
+
+
+
+
+

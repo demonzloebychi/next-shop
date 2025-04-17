@@ -8,6 +8,8 @@ import CartContext from '@/app/contexts/CartContext';
 const Header = () => {
     const [IsCartOpen, setIsCartOpen] = useState(false)
 
+    const [isOpenMenu, setIsOpenMenu] = useState(false)
+
     const cartContext = useContext(CartContext);
 
   if (!cartContext) {
@@ -38,8 +40,17 @@ const Header = () => {
 
     return (
         <header className={header.header}>
-            <nav className="nav">
-                <ul className={header.headerList}>
+            <nav className={header.nav}>
+                <button
+                    className={`${header.burgerButton} ${isOpenMenu ? `${header.active}` : ''}`}
+                    onClick={()=> setIsOpenMenu(!isOpenMenu)}
+                >
+                    <span/><span/><span/>
+                </button>
+                <ul 
+                    // className={header.headerList}
+                    className={`${header.headerList} ${isOpenMenu ? `${header.active}` : ''}`}
+                >
                     {
                         MENU.map( item => 
                             <li key={item.url} className={header.headerItem}>
@@ -50,13 +61,7 @@ const Header = () => {
                             </li>
                         )
                     }
-                    <a className={header.cartLink} href='/cart'>
-                        <p>Корзина</p>
-                        <div className={header.quantity}>
-                         {getTotalQuantity()}
-                        </div>
-                         
-                    </a>
+                    
                     {/* <li>
                         <button 
                             className={`cart ${IsCartOpen ? 'active' : ''}`}
@@ -70,6 +75,13 @@ const Header = () => {
                         </div>
                     </li> */}
                 </ul>
+                <a className={header.cartLink} href='/cart'>
+                        <p>Корзина</p>
+                        <div className={header.quantity}>
+                         {getTotalQuantity()}
+                        </div>
+                         
+                    </a>
             </nav>
             
             {/* <div>
