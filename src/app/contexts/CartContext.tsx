@@ -87,7 +87,8 @@ const handleAddToCart = (product: IProducts) => {
 
   const getTotalSum = useCallback(() => {
     const totalSum = cart.reduce((acc, item) => acc + item.product.price * item.quantity, 0);
-    const totalSumRound = Math.round(totalSum)
+    // const totalSumRound = Math.round(totalSum)
+    const totalSumRound = totalSum
 
     return totalSumRound;
   }, [cart]);

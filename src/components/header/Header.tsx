@@ -32,6 +32,19 @@ const Header = () => {
             url: '/products',
         },
         // {
+        //     name: 'Пользователь',
+        //     url: 'register',
+        // },
+        // {
+        //     name: 'Войти',
+        //     url: 'login',
+        // },
+        // {
+        //     name: 'dashboard',
+        //     url: 'dashboard',
+        // },
+
+        // {
         //     name: 'Корзина',
         //     url: '/cart'
         // }

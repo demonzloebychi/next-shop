@@ -254,6 +254,15 @@ main{
   background: var(--dange-color);
   color: var(--background);
 }
+.create-cart-button {
+  margin-top: 10px;
+  padding: 15px 20px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  background: rgb(30, 97, 221);
+  color: var(--background);
+}
 
 
 
