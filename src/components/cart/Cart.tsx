@@ -27,7 +27,9 @@ export default function Cart() {
 
   // Функция отправки данных заказа на серверный API
   const sendOrder = async () => {
-    const response = await fetch("/api/feedback", {
+    // const response = await fetch("http://localhost:4000/feedback", {
+    const response = await fetch("https://express-next-shop.vercel.app/feedback", {
+
       method: "POST",
       headers: {
         "Content-Type": "application/json",
