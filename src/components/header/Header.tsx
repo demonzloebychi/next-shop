@@ -1,22 +1,34 @@
 'use client'
 import React, { useState } from 'react';
 import header from '@/components/header/Header.module.css'
-import Cart from '../cart/Cart';
-import { useContext } from 'react';
-import CartContext from '@/app/contexts/CartContext';
+import Cart from '../Сart/Cart';
+// import { useContext } from 'react';
+// import CartContext from '@/app/contexts/CartContext';
+
+import { useCartStore } from "@/store/useCartStore";
+
+
 
 const Header = () => {
     const [IsCartOpen, setIsCartOpen] = useState(false)
 
     const [isOpenMenu, setIsOpenMenu] = useState(false)
 
-    const cartContext = useContext(CartContext);
+//     const cartContext = useContext(CartContext);
 
-  if (!cartContext) {
-    throw new Error('CartContext не найден');
-  }
+//   if (!cartContext) {
+//     throw new Error('CartContext не найден');
+//   }
 
-  const { getTotalQuantity } = cartContext;
+//   const { getTotalQuantity } = cartContext;
+
+
+// const totalQuantity = useCartStore(state => state.getTotalQuantity());
+
+
+const totalQuantity = useCartStore(state =>
+  state.cart.reduce((acc, item) => acc + item.quantity, 0)
+);
 
     const MENU = [
         {
@@ -104,7 +116,7 @@ const Header = () => {
 
                         
                         <div className={header.quantity}>
-                         {getTotalQuantity()}
+                         {totalQuantity}
                         </div>
                          
                     </a>

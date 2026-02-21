@@ -9,6 +9,15 @@ export const metadata: object = {
   }
 }
 
+  const fetchUsers = async () => {
+    const response = await fetch(`http://localhost:27017/users`)
+
+    const data = await response.json();
+
+    return data
+  }
+  
+
 
 export default function Home() {
 

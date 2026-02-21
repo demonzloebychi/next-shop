@@ -1,7 +1,7 @@
 'use client'
 import React, { useState } from 'react';
 import header from '@/components/header/Header.module.css'
-import Cart from '../cart/Cart';
+import Cart from '../Сart/Cart';
 import { useContext } from 'react';
 import CartContext from '@/app/contexts/CartContext';
 

@@ -1,24 +1,17 @@
 'use client';
 
-// import { Product } from '@/types/cart';
-import { useState, useContext } from "react";
-import { IProducts } from "@/app/products/products.interface";
-import CartContext from '@/app/contexts/CartContext';
+import { IProducts } from "@/shared/interfaces/products.interface";
+import { useCartStore } from "@/store/useCartStore";
 
 export default function RemoveFromCartButton({ product }: { product: IProducts }) {
-  const cartContext = useContext(CartContext);
-
-   if (!cartContext) {
-    throw new Error('CartContext не найден');
-  }
-  const { handleRemoveFromCart } = cartContext;
+  const removeFromCart = useCartStore(state => state.removeFromCart);
 
   return (
     <button 
-                className='remove-product' 
-                onClick={() => handleRemoveFromCart(product.id)} // Исправлено здесь
-              >
-                -
-              </button>
+      className='remove-product' 
+      onClick={() => removeFromCart(product.id)}
+    >
+      -
+    </button>
   );
 }

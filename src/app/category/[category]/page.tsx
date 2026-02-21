@@ -1,10 +1,9 @@
 import React from 'react';
 import Image from 'next/image';
-import { GetProductsResponse } from '@/app/products/products.interface'
-// import ProductCard from '@/components/Product';
+import { GetProductsResponse } from '@/shared/interfaces/products.interface'
 import ProductCard from '@/components/Product';
 import { use } from "react";
-
+import { fetchProducts } from '@/app/api/fetchProductsByCategory';
 
 
 export const metadata: object = {
@@ -17,29 +16,8 @@ export const metadata: object = {
 }
 
 
+export const revalidate = 3600;
 
-const fetchProducts = async ( category: string ) => {
-
-    const response = await fetch(`https://fakestoreapi.com/products/category/${category}`, {
-
-        cache: 'force-cache',
-        next: {
-            revalidate: 3600,
-        }
-    })
-    // console.log(response)
-
-    const data = await response.json()
-    // console.log(data)
-
-    return data as GetProductsResponse
-}
-
-
-
-// const Page = async ({ params }: { params: Promise<{ category: string }> }) => {
-// const Page = async ({ params }: { params: { category: string } }) => {
-//     const { category } = await params; 
 
 const Page = async ({params}: {params: Promise<{ category: string }>}) => {
     const { category } = await params;

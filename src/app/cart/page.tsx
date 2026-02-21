@@ -1,16 +1,9 @@
-// 'use client'
-import Cart from '@/components/cart/Cart';
+'use client'
+import Cart from '@/components/Сart/Cart';
 import React from 'react';
 
 
-export const metadata: object = {
-    title: 'Корзина',
-    description: 'Все ваши товары',
-    openGraph: {
-        title: 'Корзина',
-        description: 'Все ваши товары',
-    }
-}
+
 
 const Page = () => {
     return (

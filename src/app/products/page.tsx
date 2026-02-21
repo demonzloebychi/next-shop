@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import { GetProductsResponse } from './products.interface';
+import { GetProductsResponse } from '../../shared/interfaces/products.interface';
 // import ProductCard from '@/components/Product';
 import ProductCard from '@/components/Product';
 
@@ -46,29 +46,7 @@ const Page = async () => {
                 {
                     data?.map( item => 
                         <ProductCard product={item}  key={item.id} />
-                        // <li className='card' key={item.id} >
-                        //     <div className="card-image">
-                        //         <Image src={item.image} alt="" width='200' height='300' />
-                        //     </div>
-              
-                        //     <div className="card-info">
-                        //         <p>{item.title}</p>
-                        //         <p><b>{item.price} $</b></p>
-                        //     </div>
-                            
-
-                        //     <div className="card-actions">
-                        //         <a href={`products/${item.id}`} className="card-link">
-                        //             Подробнее
-                        //         </a>
-                        //         <button className="card-button">
-                        //             В корзину
-                        //         </button>
-                        //     </div>
-                            
-                            
-                            
-                        // </li>
+                    
                     )
                 }
             </ul>

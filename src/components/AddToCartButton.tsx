@@ -1,34 +1,45 @@
 'use client';
 
-// import { Product } from '@/types/cart';
-import { useState, useContext } from "react";
-import { IProducts } from "@/app/products/products.interface";
-import CartContext from '@/app/contexts/CartContext';
+// import {useState, useContext} from 'react';
+import {IProducts} from '@/shared/interfaces/products.interface';
 
-export default function AddToCartButton({ product }: { product: IProducts }) {
-  const [isInCard, setIsInCard] = useState(false)
-  const cartContext = useContext(CartContext);
+import {useCartStore} from '@/store/useCartStore';
+import CartActions from './CartActions/CartActions';
 
 
 
 
+export default function AddToCartButton({product}: {product: IProducts}) {
 
-  if (!cartContext) {
-    throw new Error('CartContext не найден');
-  }
+    const cart = useCartStore((state) => state.cart);
+    const addToCart = useCartStore((state) => state.addToCart);
+    const removeFromCart = useCartStore((state) => state.removeFromCart);
+    const increaseQuantity = useCartStore((state) => state.increaseQuantity);
 
-  const handleAddToCart = () => {
-    cartContext.handleAddToCart(product);
-    setIsInCard(true)
+    const cartItem = cart.find((item) => item.product.id === product.id)
 
-  };
 
-  return (
-    <button 
-      className="card-button" 
-      onClick={handleAddToCart}
-    >
-      {isInCard ? 'В корзине' : 'В корзину'}
-    </button>
-  );
+    const handleAddToCart = () => {
+        addToCart(product);
+    };
+
+    if (cartItem) {
+      return (
+        <CartActions
+          item={cartItem}
+          removeFromCart={removeFromCart}
+          increaseQuantity={increaseQuantity}
+        />
+      )
+    }
+
+    return (
+        <>
+          <button className="card-button" onClick={handleAddToCart}>
+            В корзину
+          </button>
+
+            
+        </>
+    );
 }

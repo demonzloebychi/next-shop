@@ -2,23 +2,11 @@
 'use client';
 
 import { createContext, useState, useEffect, ReactNode, useCallback } from 'react';
-import { IProducts } from "@/app/products/products.interface";
+import { IProducts } from "@/shared/interfaces/products.interface";
+import { CartItem, CartContextValue } from '@/shared/interfaces/cart.interface';
 
-// Добавляем интерфейс для элемента корзины
-interface CartItem {
-  product: IProducts;
-  quantity: number;
-}
 
-interface CartContextValue {
-  cart: CartItem[];
-  handleAddToCart: (product: IProducts) => void;
-  handleRemoveFromCart: (productId: number) => void; // Изменяем тип на number
-  handleIncreaseQuantity: (productId: number) => void; // Добавляем новую функцию
-  getTotalQuantity: () => number; // Добавляем функцию для общего количества
-  getTotalSum: () => number; // Добавляем функцию для общей суммы
-  handleClearCart : () => void
-}
+
 
 const CART_KEY = 'cart';
 const CartContext = createContext<CartContextValue | null>(null);

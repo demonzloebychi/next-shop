@@ -1,5 +1,6 @@
 import React from 'react';
 import Categories from '@/components/Categories';
+import {fetchProducts} from '../api/fetchAllCategory'
 
 export const metadata = {
   title: 'Все наши товары',
@@ -10,15 +11,8 @@ export const metadata = {
   }
 }
 
-const fetchProducts = async () => {
-  const response = await fetch('https://fakestoreapi.com/products/categories', {
-    cache: 'force-cache',
-    next: { revalidate: 3600 }
-  });
+export const revalidate = 3600; 
 
-  const data = await response.json();
-  return data as string[];
-}
 
 const Page = async () => {
   const categories = await fetchProducts();
